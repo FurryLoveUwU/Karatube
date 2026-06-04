@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мой Проект{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><a href="/">🌌Karatube</a></div>
+
+        <form method="POST" action={{ url_for("main.index") }}>
+        <input type="text" name="search">
+        <input type="submit" value="Поиск">
+        </form>
+
+        <nav class="nav">
+            <a href="/profile/{{ jwt_username }}" class="nav-button">Профиль</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        {% block content %}
+        
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        &copy; 2026 Мяу
+    </footer>
+
+    {% block scripts %}
+
+    {% endblock %}
+</body>
+</html>

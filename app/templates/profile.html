@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Мой Проект{% endblock %}
+
+{% block content %}
+    
+{% if status == "guest" %}
+    <p>Это не ваш профиль, {{ jwt_username }}</p>
+    <p>Это профиль {{ username }}</p>
+
+
+{% else %}
+    <p>Это ваш профиль, {{ username }}</p>
+
+    <a href="/upload_video">Загрузить видео<a>
+    
+    <br><br>
+    <a href="/logout" class="nav-button">Выйти из аккаунта</a>
+{% endif %}
+{% endblock %}

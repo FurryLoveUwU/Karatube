@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Мой Проект{% endblock %}
+
+{% block content %}
+
+<form action={{ url_for("main.register") }} method="POST">
+    <p>Юзернейм</p>
+        <input type="text" name="username">
+    <p>Email</p>
+        <input type="email" name="email">
+<br><br>
+    <p>Пароль</p>
+        <input type="password" name="password">
+<br><br>
+    <p>Повторите пароль</p>
+        <input type="password" name="password-repeat">
+<br><br>
+        <input class="submit-btn" type="submit" value="Войти">
+</form>
+{% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                    <br>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+{% endblock %}

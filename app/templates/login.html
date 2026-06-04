@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Мой Проект{% endblock %}
+
+{% block content %}
+
+<form action="/login", method="POST">
+<p>Юзернейм
+<input type="text", name="username">
+<p>Пароль
+<input type="password", name="password">
+<br><br>
+<input class="submit-btn" type="submit" value="Войти">
+</form>
+<p>Нет аккаунта?
+<a href="/register">Зарегестрировать</a>
+<br>
+{% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+{% endblock %}

@@ -1,0 +1,1 @@
+start "" "C:\Users\abcd\Documents\piton\Karatube\runner.py"
