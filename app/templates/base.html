@@ -16,7 +16,11 @@
         </form>
 
         <nav class="nav">
-            <a href="/profile/{{ jwt_username }}" class="nav-button">Профиль</a>
+            {% if context is defined %}
+            <a href="/profile/{{ client_username | default('None') }}" class="nav-button">Профиль</a>
+            {% else %}
+            <a href="/login" class="nav-button">Профиль</a>
+            {% endif %}
         </nav>
     </header>
 

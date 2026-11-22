@@ -4,13 +4,24 @@
 
 {% block content %}
     
-{% if status == "guest" %}
-    <p>Это не ваш профиль, {{ jwt_username }}</p>
-    <p>Это профиль {{ username }}</p>
+{% if context['status'] == "guest" %}
 
+
+    {% if client_username == "Guest" %}
+        <p>Это не ваш профиль, гость.</p>
+    {% else %}
+    <p>Это не ваш профиль, {{ client_username }}</p>
+    {% endif %}
+
+    <p>Это профиль {{ context['username'] }}</p>
+
+
+
+    
+    <a href="/upload_video">Загрузить видео<a></a>
 
 {% else %}
-    <p>Это ваш профиль, {{ username }}</p>
+    <p>Это ваш профиль, {{ client_username }}</p>
 
     <a href="/upload_video">Загрузить видео<a>
     

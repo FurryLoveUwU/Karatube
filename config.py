@@ -1,19 +1,22 @@
 import os
 from dotenv import load_dotenv
-
+from datetime import timedelta
 
 load_dotenv()
 
 app_dir = os.path.abspath(os.path.dirname(__file__))
 
 class BaseConfig:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'SthKFDMsds;gkfF2@!!fdspldaf#rF'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    JWT_SECRET_KEY = os.environ.get('SECRET_KEY') or 'FOEOUSFGkbhbghlkhrsdjlnkjUI4IUGHKBK,Bnkb'
+    JWT_SECRET_KEY = os.environ.get('SECRET_KEY')
     JWT_TOKEN_LOCATION = ["cookies"]
     JWT_ACCESS_COOKIE_NAME = "access_token"
+    JWT_CSRF_CHECK_FORM = True
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=0.5)
+    JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=7)
 
     UPLOAD_FOLDER = os.environ.get("UPLOAD_FOLDER")
     ALLOWED_EXTENSIONS = {"png", "mp4"}

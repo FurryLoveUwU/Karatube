@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<form action={{ url_for("main.register") }} method="POST">
+<form action={{ url_for("auth.register") }} method="POST">
     <p>Юзернейм</p>
         <input type="text" name="username">
     <p>Email</p>
@@ -16,7 +16,7 @@
     <p>Повторите пароль</p>
         <input type="password" name="password-repeat">
 <br><br>
-        <input class="submit-btn" type="submit" value="Войти">
+        <input class="submit-btn" type="submit" value="Зарегестрировать">
 </form>
 {% with messages = get_flashed_messages() %}
             {% if messages %}

@@ -34,13 +34,20 @@ class User(db.Model, UserMixin):
     __table_args__ = (
         CheckConstraint("length(trim(email)) > 0", name="email_not_empty"),
         CheckConstraint("length(trim(username)) > 0", name="username_not_empty"),
+        CheckConstraint("length(trim(username)) < 3", name="username_too_short"),
     )
 
-class video_content(db.Model):
-    __tablename__ = "video_content"
+class video(db.Model):
+    __tablename__ = "video"
 
     id = db.Column(db.Integer(), primary_key = True)
-    name        = db.Column(db.String(50))
-    description = db.Column(db.String(1024))
-    tags        = db.Column(db.String(1024))
-    file        = db.Column(db.String(1024))
+    username    = db.Column(db.String(20),    nullable=False)
+    video_name  = db.Column(db.String(50),    nullable=False)
+    description = db.Column(db.String(1024),  nullable=False)
+    tags        = db.Column(db.String(1024),  nullable=False)
+    date        = db.Column(db.String(1024),  nullable=False)
+    file        = db.Column(db.String(1024),  nullable=False)
+
+
+    def __repr__(self):
+        return "<id:{}:username:{}>".format(self.id, self.username)
